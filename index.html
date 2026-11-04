@@ -1,0 +1,207 @@
+
+
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="AFRICA TOUR AI, votre assistant intelligent pour découvrir et explorer l'Afrique.">
+
+<title>AFRICA TOUR AI | Explore Africa</title>
+
+<style>
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{font-family:Arial,sans-serif;background:#f6f8f5;color:#18352b}
+
+header{background:#103d30;color:white;padding:22px 6%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+
+.logo{font-size:21px;font-weight:bold;color:#e8c36a}
+
+nav a{color:white;text-decoration:none;margin-left:15px;font-size:13px}
+
+.hero{background:linear-gradient(120deg,#103d30,#22634b);color:white;text-align:center;padding:75px 20px}
+
+.hero h1{font-size:36px;margin-bottom:18px}
+
+.hero p{font-size:16px;line-height:1.6;margin-bottom:25px}
+
+.search{max-width:550px;margin:auto;display:flex;gap:8px}
+
+input{flex:1;min-width:0;padding:15px;border:1px solid #ddd;border-radius:8px;font-size:15px}
+
+button{background:#e8c36a;color:#173b2d;border:0;padding:14px 20px;border-radius:8px;font-weight:bold;cursor:pointer}
+
+section{padding:45px 6%}
+
+h2{text-align:center;margin-bottom:25px;font-size:26px}
+
+.destinations{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:15px}
+
+.place{background:white;padding:23px 12px;text-align:center;border-radius:12px;box-shadow:0 3px 12px #00000010}
+
+.place span{font-size:32px}
+
+.place h3{margin:12px 0 6px}
+
+.place p{font-size:13px;color:#64736b}
+
+.assistant{background:white;max-width:650px;margin:auto;padding:22px;border-radius:15px;box-shadow:0 3px 15px #00000012}
+
+#chat{height:220px;overflow:auto;padding:12px;background:#f3f7f3;border-radius:9px;margin-bottom:12px;line-height:1.6}
+
+.message{margin-bottom:12px}
+
+footer{background:#103d30;color:white;text-align:center;padding:25px;font-size:13px}
+
+@media(max-width:600px){header{padding:18px 4%}nav a{margin-left:8px;font-size:11px}.hero h1{font-size:29px}.search button{padding:12px}}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">🌍 AFRICA TOUR AI</div>
+
+<nav>
+
+<a href="#destinations">Destinations</a>
+
+<a href="#assistant">Assistant IA</a>
+
+</nav>
+
+</header>
+
+<div class="hero">
+
+<h1>Explore Africa. Travel Smarter.</h1>
+
+<p>Découvrez les merveilles de l'Afrique avec votre assistant touristique intelligent.</p>
+
+<div class="search">
+
+<input id="destination" placeholder="Où souhaitez-vous voyager ?">
+
+<button onclick="askDestination()">Explorer</button>
+
+</div>
+
+</div>
+
+<section id="destinations">
+
+<h2>🌍 Découvrez l'Afrique</h2>
+
+<div class="destinations">
+
+<div class="place"><span>🇨🇲</span><h3>Cameroun</h3><p>Kribi, Mont Cameroun</p></div>
+
+<div class="place"><span>🇿🇦</span><h3>Afrique du Sud</h3><p>Le Cap, Johannesburg</p></div>
+
+<div class="place"><span>🇲🇦</span><h3>Maroc</h3><p>Marrakech, Casablanca</p></div>
+
+<div class="place"><span>🇹🇿</span><h3>Tanzanie</h3><p>Zanzibar, Serengeti</p></div>
+
+<div class="place"><span>🇸🇳</span><h3>Sénégal</h3><p>Dakar, Saly</p></div>
+
+<div class="place"><span>🇰🇪</span><h3>Kenya</h3><p>Nairobi, Mombasa</p></div>
+
+</div>
+
+</section>
+
+<section id="assistant">
+
+<h2>🤖 Votre assistant touristique</h2>
+
+<div class="assistant">
+
+<div id="chat">
+
+<div class="message"><strong>AFRICA TOUR AI :</strong> Bonjour ! Je suis votre assistant touristique. Quelle destination africaine souhaitez-vous découvrir ?</div>
+
+</div>
+
+<div class="search">
+
+<input id="question" placeholder="Posez votre question...">
+
+<button onclick="sendMessage()">Envoyer</button>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>AFRICA TOUR AI © 2026</p>
+
+<p>Discover Africa. Travel Smarter.</p>
+
+</footer>
+
+<script>
+
+function askDestination(){
+
+let d=document.getElementById("destination").value;
+
+if(d){document.getElementById("question").value="Je souhaite visiter "+d;}
+
+document.getElementById("assistant").scrollIntoView({behavior:"smooth"});
+
+}
+
+function sendMessage(){
+
+let q=document.getElementById("question");
+
+if(!q.value.trim())return;
+
+let chat=document.getElementById("chat");
+
+let message=document.createElement("div");
+
+message.className="message";
+
+let question=document.createElement("strong");
+
+question.textContent="Vous : ";
+
+message.appendChild(question);
+
+message.appendChild(document.createTextNode(q.value));
+
+chat.appendChild(message);
+
+let answer=document.createElement("div");
+
+answer.className="message";
+
+answer.textContent="AFRICA TOUR AI : Merci pour votre question ! Notre assistant intelligent est en cours de développement. Nous préparons des informations sur les destinations africaines, les hôtels et les circuits touristiques. 🌍";
+
+chat.appendChild(answer);
+
+q.value="";
+
+chat.scrollTop=chat.scrollHeight;
+
+}
+
+</script>
+
+</body>
+
+</html>
